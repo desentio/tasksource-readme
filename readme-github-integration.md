@@ -97,5 +97,7 @@ app.post('/jira-tasksource-bridge', async (req, res) => {
 
 ### Links
 More information: https://www.tasksource.ai/tasksource-blog/tasksource-io-jira-integration
+
 Login: https://www.app.tasksource.io/login
+
 Questions: info@tasksource.io
