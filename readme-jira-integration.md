@@ -8,10 +8,10 @@
 2. Once done, move to the "Integrations" tab. Here, key in your Jira URL and confirm your changes by clicking on the "Save" button.
 
 3. The next step involves informing Jira about the specific tasksource project the issue pertains to. This can be achieved by creating a Jira label that's linked to your tasksource project.
-![alt text](http://app.tasksource.io/img/readme/Screenshot 2023-06-19 at 09.07.12.png)
+![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.07.12.png)
 
 4. To do this, navigate to your tasksource project, click on the "Integrations" tab, and then create a new Jira Label.
-![alt text](http://app.tasksource.io/img/readme/Screenshot 2023-06-19 at 09.10.26.png)
+![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.10.26.png)
 
 
 
