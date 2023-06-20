@@ -13,7 +13,7 @@
 
 4. To do this, navigate to your tasksource project, click on the "Integrations" tab, and then create a new Jira Label.
 
-![alt text](http://app.tasksource.io/img/readme/Screenshot 2023-06-19 at 09.10.26.png)
+![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.10.26.png)
 
 
 
