@@ -70,7 +70,37 @@ At our organization, we place the utmost importance on security and privacy. Our
 By implementing these stringent security measures, we strive to provide a safe and secure environment for your data, ensuring peace of mind and a reliable experience.
 
 
+
+## Deploy your own bridge
+We provide a bridge service that forwards webhooks from JIRA to tasksoure. You can deploy that bridge your own servers so you are in full control of security.
+
+If you would like to deploy your own bridge, you can do so by following these steps:
+
+````javascript
+app.post('/jira-tasksource-bridge', async (req, res) => {
+  try {
+    // Extract the assignee email from the webhook payload
+    const assigneeEmail = req.body.issue.fields.assignee.emailAddress;
+
+    // Check if the assignee email matches the required email
+    if (assigneeEmail === 'integrations@tasksource.io') {
+      // Forward the webhook event to tasksource (replace 'TASKSOURCE_WEBHOOK' with your service URL)
+      await axios.post('http://TASKSOURCE_WEBHOOK', req.body);
+    }
+
+    // Send a success status back to JIRA
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    // Send an error status back to JIRA if there's any error
+    res.sendStatus(500);
+  }
+});
+````
+
 ### Links
 More information: https://www.tasksource.ai/tasksource-blog/tasksource-io-jira-integration
+&nbsp;
 Login: https://www.app.tasksource.io/login
+&nbsp;
 Questions: info@tasksource.io
