@@ -1,70 +1,70 @@
-# Jira Integration
+# Github Integration
+
+## How to Set Up Github Integration in Tasksource
+
+1. Begin by navigating to the Tasksource profile settings page at this URL: [https://www.app.tasksource.io/profile/settings](https://www.app.tasksource.io/profile/settings).
+
+2. Go to the "Profile" tab. Here, you will find the "Connect Github Account" button. Click on it, and you will be redirected to the Github authorization page.
+
+![alt text](media/github-integration-profile-step-1.png)
+
+3. On the Github authorization page, you will be asked to grant some permissions to Tasksource. You can also grant access to an organization if you wish to connect Tasksource projects with Github organization repositories in the future. After clicking the "Authorize" button, you will be redirected back to Tasksource. You are now ready to connect Tasksource projects with your Github repositories.
+
+![alt text](media/github-integration-profile-step-2.png)
+
+Watch a video of Jemika connecting a Github account here:
+[Watch Video](media/github-add-profile.webm)
 
 
-## How to setup Jira integration in tasksource
+## Connect Your First Project
 
-1. Begin by navigating to the tasksource company creation page at this URL: https://www.app.tasksource.io/companies. Here, proceed to establish a new company.
+1. Create a new project at [https://www.app.tasksource.io/projects](https://www.app.tasksource.io/projects), fill in the general project information, and then navigate to the "Integrations" tab.
 
-2. Once done, move to the "Integrations" tab. Here, key in your Jira URL and confirm your changes by clicking on the "Save" button.
+2. If your Github account is not yet connected to Tasksource, you will see a "Connect Github Account" button with the same functionality as the button in the profile settings. Click on it and follow the same steps as in the "How to Set Up Github Integration in Tasksource" section.
 
-3. The next step involves informing Jira about the specific tasksource project the issue pertains to. This can be achieved by creating a Jira label that's linked to your tasksource project.
+3. If your Github account is already connected, a list of the repositories you have recently worked on will be displayed. There is also a filter feature to help you find the repository you want to connect. On the left side, select the repository owner, which can be a Github user or organization. On the right side, input the repository name. After you have located the repository, click "Select".
 
-![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.07.12.png)
-
-4. To do this, navigate to your tasksource project, click on the "Integrations" tab, and then create a new Jira Label.
-
-![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.10.26.png)
+![alt text](media/github-integration-project-step-1.png)
+  ``Please note: If you cannot find the organization you want to connect, it means you did not grant access to the organization. To resolve this, you need to remove the Github integration and reconnect it, granting the correct permissions.``
 
 
+4. Next, select the development branch you wish to connect.
 
-## Now, let's shift our attention to Jira's setup:
+![alt text](media/github-integration-project-step-2.png)
 
-1. Start by copying the tasksource webhook. You can find this under the "Integrations" section at https://www.app.tasksource.io/companies.
+Congratulations! You've successfully completed the setup for Github integration in Tasksource. You can now enjoy the following benefits for tasks under the connected project:
 
-2. Next, click on the "Settings" option located at the top right corner of your screen. From the subsequent dropdown menu, select "System," followed by "Webhooks."
+1. If the assigned developer has their Github account connected to Tasksource, Tasksource will automatically grant them access to the connected repository.
 
-3. Proceed to add a new Webhook and paste the previously copied tasksource webhook URL into the relevant field.
+2. You can track commit progress in the tasks under the connected project.
 
-4. In the "Events" section, check the boxes for the following options: "Issue created, updated, and deleted", "Comments created, updated, and deleted", and "Attachments created and deleted."
+3. When a task is closed, Tasksource will automatically open a Pull Request and revoke the developer's access to the repository.
 
-![alt text](http://app.tasksource.io/img/readme/jemika-jira.jpeg)
-
-5. Once you have filled in all the necessary details, click on the "Create" button to confirm your new webhook.
-
-6. To add necessary permissions, include integrations@tasksource.io as a regular project member in your Jira project.
-
-Congratulations! You've successfully completed the setup for Jira integration in tasksource. Now, you can seamlessly manage your tasks across both platforms. 
-
-Watch a Video of Jemika seting up the jira webhook here:
-[Watch Video](https://github.com/desentio/tasksource-main-app/assets/22271360/9f6d5177-dd1b-46d0-a118-72b7c896da9d)
+Watch a video of Jemika connecting a Github repository here:
+[Watch Video](media/github-add-project.webm)
 
 
 
+## Remove GitHub Connection
 
-## Outsource your first issue
+1. Navigate to the TaskSource profile settings page at this URL: [https://www.app.tasksource.io/profile/settings](https://www.app.tasksource.io/profile/settings).
 
-To outsource your first issue please follow these steps:
+2. Go to the "Integrations" tab. If your GitHub account is already connected, there will be an "X" icon in the top right corner of the GitHub Profile button. Click on it, and a warning message will be displayed.
 
-1. Delegate the issue to the email address integrations@tasksource.io. This action will involve assigning the issue within your system to this email address.
+![alt text](media/github-remove-profile-step-1.png)
 
-2. Attach the Jira label, which you previously created in the tasksource project, to the issue. This label will help identify and track the issue across both platforms.
 
-After these steps, the issue synchronization with tasksource will be accomplished. A developer will then commence work on the issue. You can monitor the issue's progress and ongoing activities via the comment section in tasksource, ensuring transparency and facilitating effective communication.
+3. Click "Yes, remove connection" to proceed.
 
+![alt text](media/github-remove-profile-step-2.png)
 
 
 ## Security
 
 At our organization, we place the utmost importance on security and privacy. Our stringent security policy reflects our commitment to safeguarding your information and maintaining your trust. Below are some of the robust security measures we have implemented:
 
+- With regards to the commit list, we guarantee that none of it is stored on Tasksource servers. All commits are fetched using the user's own Github token, so only Tasksource users who have a Github account with access to the repository can see them.
 
-- We have designed our webhook endpoint to respond only to changes associated with the integrations@tasksource.io account. Any unrelated activity is unequivocally ignored. This rigid approach guarantees that our webhook endpoint cannot be exploited to extract data from your Jira instance, ensuring maximum data security.
+- Our protocols strictly align with Github's security guidelines, demonstrating our commitment to not only adhere to but also exceed industry standards.
 
-- Recognizing that some clients may desire complete control over their webhook, we provide an on-premise bridge service that can be self-hosted. If this appeals to you, please reach out to us for more detailed information.
-
-- With regards to media uploaded to Jira, we guarantee that none of it is stored on tasksource servers. Instead, we employ a secure blob forwarding mechanism that displays images, videos, and all other files directly from your Jira, without storing them in any external locations.
-
-- Our protocols align strictly with the Jira security webhook guidelines, demonstrating our commitment to not only adhere to but also exceed industry standards.
-
-By implementing these stringent security measures, we strive to provide a safe and secure environment for your data, ensuring peace of mind and a reliable experience.
-
+By implementing these rigorous security measures, we strive to provide a safe and secure environment for your data, ensuring peace of mind and a reliable experience.
