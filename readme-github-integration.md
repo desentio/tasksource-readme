@@ -6,7 +6,7 @@
 
 2. Go to the "Profile" tab. Here, you will find the "Connect Github Account" button. Click on it, and you will be redirected to the Github authorization page.
 
-![alt text](media/github-integration-profile-step-1.png)
+![alt text](media/github-integration-profile-step-0.png)
 
 3. On the Github authorization page, you will be asked to grant some permissions to Tasksource. You can also grant access to an organization if you wish to connect Tasksource projects with Github organization repositories in the future. After clicking the "Authorize" button, you will be redirected back to Tasksource. You are now ready to connect Tasksource projects with your Github repositories.
 
