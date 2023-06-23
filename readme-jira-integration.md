@@ -8,13 +8,12 @@
 2. Once done, move to the "Integrations" tab. Here, key in your Jira URL and confirm your changes by clicking on the "Save" button.
 
 3. The next step involves informing Jira about the specific tasksource project the issue pertains to. This can be achieved by creating a Jira label that's linked to your tasksource project.
-&nbsp;
-&nbsp;
-&nbsp;
-![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.07.12.png)
 
-5. To do this, navigate to your tasksource project, click on the "Integrations" tab, and then create a new Jira Label.
-![alt text](http://app.tasksource.io/img/readme/Screenshot%202023-06-19%20at%2009.10.26.png)
+![alt text](media/jira-company-integration.png)
+
+4. To do this, navigate to your tasksource project, click on the "Integrations" tab, and then create a new Jira Label.
+
+![alt text](media/jira-project-integration.png)
 
 
 
@@ -24,22 +23,44 @@
 
 2. Next, click on the "Settings" option located at the top right corner of your screen. From the subsequent dropdown menu, select "System," followed by "Webhooks."
 
+![alt text](media/jira-webhook-setup-system.png)
+![alt text](media/jira-webhook-setup-webhook.png)
+
 3. Proceed to add a new Webhook and paste the previously copied tasksource webhook URL into the relevant field.
 
-4. In the "Events" section, check the boxes for the following options: "Issue created, updated, and deleted", "Comments created, updated, and deleted", and "Attachments created and deleted."
+![alt text](media/jira-webhook-setup-url.png)
 
-![alt text](http://app.tasksource.io/img/readme/jemika-jira.jpeg)
+4. Add this into the JQL query field, so only issues that assigned to integrations@tasksource.io will trigger the webhook
 
-5. Once you have filled in all the necessary details, click on the "Create" button to confirm your new webhook.
+````jql
+assignee = "integrations@tasksource.io"
+````
 
-6. To add necessary permissions, include integrations@tasksource.io as a regular project member in your Jira project.
+Example:
+
+![alt text](media/jira-webhook-setup-jql.png)
+
+5. In the "Events" section, check the boxes for the following options: "Issue created, updated, and deleted" & "Comments created, updated, and deleted"
+
+![alt text](media/jira-webhook-setup-events.png)
+
+6. Once you have filled in all the necessary details like image below, click on the "Create" button to confirm your new webhook.
+
+![alt text](media/jira-webhook-setup.png)
+
+7. To add necessary permissions, include integrations@tasksource.io as a regular project member in your Jira project.
+
+![alt text](media/jira-people-setup-step-1.png)
+![alt text](media/jira-people-setup-step-2.png)
+![alt text](media/jira-people-setup-step-3.png)
 
 Congratulations! You've successfully completed the setup for Jira integration in tasksource. Now, you can seamlessly manage your tasks across both platforms. 
 
-Watch a Video of Jemika seting up the jira webhook here:
-[Watch Video](https://github.com/desentio/tasksource-main-app/assets/22271360/9f6d5177-dd1b-46d0-a118-72b7c896da9d)
+Watch a Video of Jemika setting up the jira webhook here:
 
+[Part 1: Setup webhook](media/jira-webhook-setup-full.webm)
 
+[Part 2: Invite tasksource integration account into jira project](media/jira-people-setup-full.webm)
 
 
 ## Outsource your first issue
@@ -52,6 +73,7 @@ To outsource your first issue please follow these steps:
 
 After these steps, the issue synchronization with tasksource will be accomplished. A developer will then commence work on the issue. You can monitor the issue's progress and ongoing activities via the comment section in tasksource, ensuring transparency and facilitating effective communication.
 
+![alt text](media/jira-issue-setup.png)
 
 
 ## Security
@@ -70,37 +92,9 @@ At our organization, we place the utmost importance on security and privacy. Our
 By implementing these stringent security measures, we strive to provide a safe and secure environment for your data, ensuring peace of mind and a reliable experience.
 
 
-
-## Deploy your own bridge
-We provide a bridge service that forwards webhooks from JIRA to tasksoure. You can deploy that bridge your own servers so you are in full control of security.
-
-If you would like to deploy your own bridge, you can do so by following these steps:
-
-````javascript
-app.post('/jira-tasksource-bridge', async (req, res) => {
-  try {
-    // Extract the assignee email from the webhook payload
-    const assigneeEmail = req.body.issue.fields.assignee.emailAddress;
-
-    // Check if the assignee email matches the required email
-    if (assigneeEmail === 'integrations@tasksource.io') {
-      // Forward the webhook event to tasksource (replace 'TASKSOURCE_WEBHOOK' with your service URL)
-      await axios.post('http://TASKSOURCE_WEBHOOK', req.body);
-    }
-
-    // Send a success status back to JIRA
-    res.sendStatus(200);
-  } catch (err) {
-    console.error(err);
-    // Send an error status back to JIRA if there's any error
-    res.sendStatus(500);
-  }
-});
-````
-
 ### Links
 More information: https://www.tasksource.ai/tasksource-blog/tasksource-io-jira-integration
-&nbsp;
+
 Login: https://www.app.tasksource.io/login
-&nbsp;
+
 Questions: info@tasksource.io
